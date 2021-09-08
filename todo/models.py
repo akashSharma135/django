@@ -9,3 +9,8 @@ class Todo(models.Model):
     created = models.DateTimeField(default=datetime.now,blank=True) 
 
 
+    # custom permissions
+    class Meta:
+        permissions = [
+            ("change_priority", "Can change priority of a task"),
+        ]

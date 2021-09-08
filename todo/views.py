@@ -1,13 +1,11 @@
 from rest_framework import viewsets
 from .serializer import TodoSerializer, UserSerializer
-from django.shortcuts import render
 from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
-from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 
 from rest_framework.decorators import api_view, APIView
 
@@ -36,6 +34,7 @@ def dummy(request):
 class TodoViewSet(viewsets.ModelViewSet):
     serializer_class = TodoSerializer
     queryset = Todo.objects.all()
+    permission_classes = (DjangoModelPermissions,)
 
 class UserAuth(APIView):
     """

@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('todo.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('', include('fundsapi.urls'))
     # path('todo/', include('todo.urls'))
 ]
